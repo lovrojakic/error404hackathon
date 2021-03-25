@@ -31,13 +31,9 @@ def i3():
 def i4():
     return render_template('index-4.html')
 
-@app.route("/json-test")
-def jsontest():
-    print((amadeus.reference_data.urls.checkin_links.get()).data)
-    return (amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')).result
-
 @app.route("/query", methods=["POST"])
 def query():
-    leavingFrom = request.form["leavingFrom"]
-    goingTo = request.form["goingTo"]
-    return goingTo
+    leavingFrom = request.form["leavingFrom"].upper()
+    goingTo = request.form["goingTo"].upper()
+    print(leavingFrom, goingTo)
+    return amadeus.shopping.flight_dates.get(origin=leavingFrom, destination=goingTo).result
