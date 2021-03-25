@@ -1,12 +1,11 @@
 from flask import Flask, request, render_template, jsonify, Response
-from amadeus import Client, ResponseError
-import requests
+#from amadeus import Client, ResponseError
 app = Flask(__name__)
 
-amadeus = Client(
-    client_id='CujnhbJ1hfGIco8AkJ6DktAzK1KW0ARp',
-    client_secret='7OotVvuBVqcMmONt'
-)
+#amadeus = Client(
+#    client_id='CujnhbJ1hfGIco8AkJ6DktAzK1KW0ARp',
+#    client_secret='7OotVvuBVqcMmONt'
+#)
 
 @app.route("/")
 def hello():
@@ -32,6 +31,6 @@ def i3():
 def i4():
     return render_template('index-4.html')
 
-@app.route("/json-test")
-def jsontest():
-    return (amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')).result
+#@app.route("/json-test")
+#def jsontest():
+#    return (amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')).result
